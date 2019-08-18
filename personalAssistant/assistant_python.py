@@ -19,7 +19,7 @@ def assistant_speaks(output):
 
     toSpeak = gTTS(text=output, lang='en', slow=False)
     # saving the audio file given by google text to speech
-    file = str(num) + ".mp3
+    file = str(num) + ".mp3"
     toSpeak.save(file)
 
     # playsound package is used to play the same file.
