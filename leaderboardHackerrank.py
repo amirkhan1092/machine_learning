@@ -7,7 +7,8 @@ from webdriver_manager.chrome import ChromeDriverManager
 import time
 time.sleep(3)
 driver = webdriver.Chrome(ChromeDriverManager().install())
-contest = 'python38-12'
+contest = 'python38-12'  # add your contest name
+
 link = f"https://www.hackerrank.com/contests/{contest}/leaderboard"
 driver.get(link)
 
@@ -23,7 +24,7 @@ for option in el.find_elements_by_tag_name('option'):
 leaderboardPage = driver.page_source
 driver.quit()
 leaderboardPage
-time.sleep(10)
+
 
 soup = BeautifulSoup(leaderboardPage, 'html.parser')
 time.sleep(5)
