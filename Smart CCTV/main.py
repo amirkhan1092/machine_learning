@@ -12,7 +12,12 @@ while cam.isOpened():
     _, thresh = cv2.threshold(blur, 20, 255, cv2.THRESH_BINARY)
     dilated = cv2.dilate(thresh, None, iterations=3)
     contour, _ = cv2.findContours(dilated, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
-    cv2.drawContours(image1, contour, -1, (0, 255, 0), 2)
+    # cv2.drawContours(image1, contour, -1, (0, 255, 0), 2)
+    for c in contour:
+        if cv2.contourArea(c) < 5000:
+            continue
+        x, y, w, h = cv2.boundingRect(c)
+        cv2.rectangle(image1, (x, y), (x+w, y+h), (0, 255, 0), 2)
     cv2.imshow('Khan Camera', image1)
     if cv2.waitKey(10) == ord('q'):  # wait for 10ms for wait-key
         break
