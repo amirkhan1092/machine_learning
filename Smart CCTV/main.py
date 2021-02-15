@@ -1,4 +1,5 @@
 import cv2
+import winsound
 # init camera
 cam = cv2.VideoCapture(0)
 
@@ -18,6 +19,7 @@ while cam.isOpened():
             continue
         x, y, w, h = cv2.boundingRect(c)
         cv2.rectangle(image1, (x, y), (x+w, y+h), (0, 255, 0), 2)
+        winsound.Beep(500, 300)
     cv2.imshow('Khan Camera', image1)
     if cv2.waitKey(10) == ord('q'):  # wait for 10ms for wait-key
         break
