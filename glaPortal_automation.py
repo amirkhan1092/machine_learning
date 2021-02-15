@@ -6,17 +6,34 @@ import keyboard
 import time
 # driver = webdriver.Chrome()
 
-driver.get('http://172.16.10.20:1000/login?')
-tmp = driver.find_element_by_id('ft_un')
+driver.get('http://glauniversity.in:8080/EduwareHome/Home.aspx#')
+tmp = driver.find_element_by_id('cboxOverlay')
 tmp.click()
-tmp.send_keys('amir.khan')
 time.sleep(2)
-tmp2 = driver.find_element_by_id('ft_pd')
-tmp2.click()
-tmp2.send_keys('54892044')
-time.sleep(2)
-tmp3 = driver.find_element_by_xpath('/html/body/div/div/form/div[3]/input')
-tmp3.click()
+choice = driver.find_element_by_id('dl_role')
+choice.click()
+for option in choice.find_elements_by_tag_name('option'):
+    if option.text == 'EMS (Exam Management Sys.)':
+        option.click()
+        time.sleep(2)
+
+
+user_name = driver.find_element_by_id('txt_user_name')
+user_name.send_keys('GLA118309')
+password = driver.find_element_by_id('txt_password')
+password.click()
+time.sleep(1)
+keyboard.write('motu@gla')
+keyboard.press('enter')
+
+
+
+
+
+
+
+
+
 # password = driver.find_element_by_id('dl_role')
 # password.send_keys('amir@gla')
 

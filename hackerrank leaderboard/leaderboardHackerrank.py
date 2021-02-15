@@ -25,6 +25,7 @@ b22-eceb
 b22-mca'''
 
 
+
 lst = '''b22-csea
 b22-cseb
 b22-csec
@@ -43,15 +44,16 @@ b22-ecea
 b22-eceb
 b22-mca'''.split()
 
+obj = ChromeDriverManager().install()
 
 for contest in lst:
-    time.sleep(5)
-    driver = webdriver.Chrome(ChromeDriverManager().install())
+    time.sleep(3)
+    driver = webdriver.Chrome(obj)
     link = f"https://www.hackerrank.com/contests/{contest}/leaderboard"
     driver.get(link)
-    
+    time.sleep(3)
     ##driver.find_element_by_class_name('icon-cancel-small').click()
-    page_source = driver.page_source
+
     try:
         el = driver.find_element_by_id('pagination-length')
         for option in el.find_elements_by_tag_name('option'):
@@ -61,8 +63,8 @@ for contest in lst:
 
         leaderboardPage = driver.page_source
 
-    except:
-        print('contest empty')
+    except Exception as e:
+        print('contest empty', e)
     else:
         soup = BeautifulSoup(leaderboardPage, 'html.parser')
         time.sleep(5)
