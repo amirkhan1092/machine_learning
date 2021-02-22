@@ -17,6 +17,13 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="\personalAssistant\rotate_screen_hack.py">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
       </map>
     </option>
   </component>
